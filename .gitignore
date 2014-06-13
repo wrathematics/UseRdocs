@@ -1,0 +1,14 @@
+*~
+*.swp
+
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc
+*.nav
+*.snm
+*.vrb
+*.listing
+*.tex.backup
+

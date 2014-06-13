@@ -1,0 +1,70 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsfonts, amsmath, hanging, hyperref, natbib, parskip, times}
+\usepackage[pdftex]{graphicx}
+\hypersetup{
+  colorlinks,
+  linkcolor=blue,
+  urlcolor=blue
+}
+
+
+\let\section=\subsubsection
+%\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}} 
+%\let\proglang=\textit
+%\let\code=\texttt 
+
+%%% From jss.cls
+\makeatletter
+\newcommand\code{\bgroup\@makeother\_\@makeother\~\@makeother\$\@codex}
+\def\@codex#1{{\normalfont\ttfamily\hyphenchar\font=-1 #1}\egroup}
+\makeatother
+\let\proglang=\textsf
+\newcommand{\pkg}[1]{{\fontseries{b}\selectfont #1}}
+%%% Utility
+\newcommand{\fix}[1]{{\color{blue} #1}}
+\newcommand{\notdone}[1]{{\color{red} #1}}
+
+\renewcommand{\title}[1]{\begin{center}{\bf \LARGE #1}\end{center}}
+\newcommand{\affiliations}{\footnotesize}
+\newcommand{\keywords}{\paragraph{Keywords:}}
+
+\setlength{\topmargin}{-15mm}
+\setlength{\oddsidemargin}{-2mm}
+\setlength{\textwidth}{165mm}
+\setlength{\textheight}{250mm}
+
+\begin{document}
+\pagestyle{empty}
+
+\title{Elevating \proglang{R} to Supercomputers}
+
+\begin{center}
+  {\bf Drew Schmidt$^{1,^\star}$, Wei-Chen Chen$^{2}$, Pragneshkumar Patel$^{1}$, George Ostrouchov$^{1,2}$}
+\end{center}
+
+\begin{affiliations}
+1. Remote Data Analysis and Visualization Center --- University of Tennessee Knoxville, USA \\[-2pt]
+2. Computer Science and Mathematics Division --- Oak Ridge National Laboratory, USA \\[-2pt]
+$^\star$Contact author: \href{mailto:schmidt@math.utk.edu}{schmidt@math.utk.edu}
+\end{affiliations}
+
+
+\keywords parallel computing, high performance computing, big data, SPMD
+
+\vskip 0.8cm
+
+The biggest supercomputing platforms in the world are distributed memory machines, but the overwhelming majority of the development for parallel \proglang{R} infrastructure has been devoted to small shared memory machines.  Additionally, most of this development focuses on task parallelism, rather than data parallelism.  But as big data analytics becomes ever more attractive to both users and developers, it becomes increasingly necessary for \proglang{R} to add distributed computing infrastructure to support this kind of big data analytics which utilize large distributed resources.  
+
+The \emph{Programming with Big Data in \proglang{R}} (\proglang{pbdR}) project aims to provide such infrastructure, elevating the \proglang{R} language to these massive-scale computing platforms.  The main goal of the project is to empower data scientists by bringing flexibility and a big analytics toolbox to big data challenges, with an emphasis on productivity, portability, and performance.  We achieve this in part by mapping high-level programming syntax to portable, high-performance, scalable, parallel libraries such as MPI and ScaLAPACK.  This not only benefits the \proglang{R} community by enabling analysis of larger data than ever before with \proglang{R}, but it also benefits the supercomputing community which, to date, mostly only dabbles superficially with statistical techniques.
+
+A major focus of the project is ease of use, with great effort spent towards minimizing the burdens of supercomputing for \proglang{R} users and developers.  Programs written using \proglang{pbdR} packages are written in the Single Program/Multiple Data, or SPMD style (not to be confused with SIMD architecture computers), which is a very natural extension of serial programming for distributed platforms.  This paradigm together with extensive use of \proglang{R}'s S4 methods allows us to create highly scalable tools with nearly-native serial \proglang{R} syntax.
+
+In this talk, we will discuss some of the early successes of the \proglang{pbdR} project, benchmarks, challenges, and future plans.
+
+
+%% references: 
+\nocite{pbdR2012,slug,Chen2012pbdMPIpackage,Schmidt2012pbdDMATpackage,MPI1994}
+\bibliographystyle{chicago}
+\bibliography{pbd}
+
+\end{document}
