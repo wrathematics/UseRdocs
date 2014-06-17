@@ -1,0 +1,154 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage{amsfonts, amsmath, hanging, hyperref, parskip, times}
+\usepackage[numbers]{natbib}
+\usepackage[pdftex]{graphicx}
+\hypersetup{
+  colorlinks,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\let\section=\subsubsection
+\newcommand{\pkg}[1]{{\normalfont\fontseries{b}\selectfont #1}} 
+\let\proglang=\textit
+\let\code=\texttt 
+\renewcommand{\title}[1]{\begin{center}{\bf \LARGE #1}\end{center}}
+\newcommand{\affiliations}{\footnotesize\centering}
+\newcommand{\keywords}{\paragraph{Keywords:}}
+
+\setlength{\topmargin}{-15mm}
+\setlength{\oddsidemargin}{-2mm}
+\setlength{\textwidth}{165mm}
+\setlength{\textheight}{250mm}
+
+
+
+\usepackage{xcolor}
+\usepackage{xspace}
+
+\definecolor{pbdgrn}{HTML}{005700}
+\definecolor{pbdrd}{HTML}{ab0000}
+\definecolor{pbdylw}{HTML}{ab7e00}
+\definecolor{pbdblu}{HTML}{2b74ec}
+\newcommand{\pbdR}{%
+\textbf{\color{pbdgrn}{p}\color{pbdrd}{b}\color{pbdylw}{d}\color{pbdblu}{R}}%
+\xspace}
+
+
+
+
+
+\begin{document}
+\pagestyle{empty}
+
+\title{Programming with Big Data in R}
+
+\begin{center}
+  {\bf Drew Schmidt$^{1,^\star}$, George Ostrouchov$^{2,1,\dagger}$}
+\end{center}
+
+\begin{affiliations}
+1. Joint Institute for Computational Sciences, University of Tennessee 
+\\[-2pt]
+2. Oak Ridge National Laboratory \\[-2pt]
+$^\star$%
+\href{mailto:schmidt@math.utk.edu}{schmidt@math.utk.edu}, 
+$^\dagger$%
+\href{mailto:ostrouchovg@ornl.gov}{ostrouchovg@ornl.gov} 
+\\
+\end{affiliations}
+
+% We interpret big data literally to mean that its size requires
+% parallel processing because it does not fit in the memory of a
+% single multicore machine or because we need to make its processing
+% time tolerable.
+\vspace{1em}
+
+\paragraph{Overview:} 
+The tutorial will introduce attendees to high performance computing
+concepts for dealing with big data using R, particularly on large
+distributed platforms. We will describe the use of the 
+\href{http://r-pbd.org}{``programming with big data in R'' (\pbdR)} 
+package ecosystem by presenting
+several examples of varying complexity. Our packages provide
+infrastructure to use and develop advanced parallel R scripts that scale
+to \emph{tens of thousands} of cores on supercomputers but also provide simple
+parallel solutions for multicore laptops.
+
+Our packages are described in a textbook-style 
+\href%
+{http://cran.r-project.org/web/packages/pbdDEMO/vignettes/pbdDEMO-guide.pdf}%
+{vignette}
+associated with
+our package 
+\href{http://cran.r-project.org/web/packages/pbdDEMO/index.html}{pbdDEMO}. 
+This tutorial will follow many of the examples
+presented in the document, which we continue to update. We conducted this
+tutorial successfully at UseR 2013. However, this year's
+tutorial will include numerous updates and improvements, including
+demonstrations of some of our new developments and applications completed
+since last year.
+
+
+In this tutorial, we will:
+\begin{itemize}
+  \item Provide a quick overview of parallel R's capabilities, and discuss how R 
+can interface with parallel hardware and HPC libraries.
+  \item Discuss the value of profiling, and show off our new profiling package 
+pbdPAPI.
+  \item Introduce basic MPI programming concepts, and its simplified interface 
+via \href{http://cran.r-project.org/web/packages/pbdMPI/index.html}{pbdMPI}.
+  \item Discuss parallel data input.
+  \item Introduce distributed matrices and distributed matrix methods.
+\end{itemize}
+
+
+\paragraph{Attendee background:} 
+We assume intermediate knowledge of R. No prior parallel programming experience 
+is necessary. If you wish to follow along on your multicore laptop during the 
+tutorial, please install (or check that you have):
+
+\begin{itemize}
+  \item R (and Rtools if you are a Windows user)
+  \item An MPI library
+  \item the \pbdR packages
+\end{itemize}
+
+See our 
+\href{http://www.r-pbd.org/install.html}{installation instructions}
+for details about how to install these requisites for each major platform. 
+Please note that we are anticipating having new releases of most of our packages 
+just before UseR! 2014, so you may wish to wait until just before the tutorial 
+to install these packages.
+
+
+
+\paragraph{Workshop Materials:}
+
+Slides and source code for the tutorial will be made available by June
+30, 2014 on the \href{http://r-pbd.org/tutorials.html}{\pbdR website}.
+
+% We will have login tokens available for attendees to use the supercomputer 
+% Nautilus, a 1024 core SGI system at NICS. Use of this resource is optional even 
+% for hands-on purposes, but all pbdR packages are installed there, making 
+% following along easier. You will need an ssh client (such as Putty on Windows; 
+% Mac/Linux come with ssh by default) in order to make use of this resource. We 
+% note that this is our first tutorial use of this resource across the Atlantic. 
+% We expect things to go smoothly, but if not, your multicore laptop is the 
+% backup.
+
+
+\paragraph{Presenters:}
+Drew Schmidt is a researcher at the University of Tennessee interested in the 
+intersection of mathematics, statistics, and high performance computing, and is 
+one of the lead developers of the \pbdR project.
+
+George Ostrouchov is Senior Research Scientist at the Oak Ridge National
+Laboratory and Joint Faculty Professor at the University of
+Tennessee. George's interests are focused on the interaction of high
+performance computing and statistics, and he is the architect and lead
+of the \pbdR project.
+
+\end{document}
+
